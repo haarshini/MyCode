@@ -1,0 +1,36 @@
+from random import randint
+val = randint(1,100)
+print('WELCOME TO GUESSING GAME')
+print('Find the number I think')
+print("If you're guess is more than 10 numbers away from mine, I'll tell you you're COLD")
+print("If you're guess is within 10 numbers of mine, I'll tell you you're WARM")
+print("If you're guess is father than you're recent guess. I'll tell you that you're getting COLDER")
+print("If you're guess is close than you're recent guess. I'll tell you that you're getting WARMER")
+print("GAME ON")
+print("I'm thinking of a number betwwen 1 and 100")
+guess=[0]
+name = input("What's your name?")
+while True:
+    g = int(input("Enter your guess:"))
+    if g < 1 or g > 100:
+        print('OUT OF BOUNDS!')
+        print('Please try again')
+        continue
+
+    if g == val:
+        print(name + ",You've guessed it correctly." )
+        print('The number of guesses are '+ str(len(guess)))
+        break
+
+    guess.append(g)
+     
+    if guess[-2]:
+        if abs(val-g) < abs(val-guess[-2]):
+            print('WARMER')
+        else:
+            print('COLDER')
+    else:
+        if abs(val-g) <= 10:
+            print('WARM')
+        else:
+            print('COLD')
